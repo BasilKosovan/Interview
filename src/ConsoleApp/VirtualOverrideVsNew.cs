@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace Interview
 {
     public class VirtualOverrideVsNew
     {
@@ -10,9 +10,9 @@ namespace ConsoleApp1
             A a2 = new B();
             B b1 = new B();
 
-            a1.Print(); // 
-            a2.Print(); // 
-            b1.Print(); // 
+            a1.Print(); //  A
+            a2.Print(); //  B
+            b1.Print(); //  B
 
         }
 
@@ -20,7 +20,7 @@ namespace ConsoleApp1
         {
             public int MyProperty { get; set; }
 
-            public void Print()
+            public virtual void Print()
             {
                 Console.WriteLine($"{nameof(A)}");
             }
@@ -28,7 +28,7 @@ namespace ConsoleApp1
 
         public class B : A
         {
-            public void Print()
+            public override void Print()
             {
                 Console.WriteLine($"{nameof(B)}");
             }

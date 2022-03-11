@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Interview
 {
     internal class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
 
             //VirtualOverrideVsNew.Execute();
             //RefOut.Execute();
 
-            //await AsyncAwaitVsTask.Execute1();
-            await AsyncAwaitVsTask.Execute2();
-
-
             Console.ReadKey();
         }
-
     }
 }

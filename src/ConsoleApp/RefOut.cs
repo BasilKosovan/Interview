@@ -1,23 +1,24 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace Interview
 {
     public class RefOut
     {
         public static void Execute()
         {
             var instanceVariable = new TestClass { MyProperty = 1 };
-            DoSmthQ1(instanceVariable);
+            DoSmthQ3(ref instanceVariable); // 10
+            
+            
             //DoSmthQ2(instanceVariable);
             //DoSmthQ3(instanceVariable);
 
             instanceVariable.Print();
         }
 
-
-        public static void DoSmthQ1(TestClass instanceVariableInMethod)
+        public static void DoSmthQ3(ref TestClass instanceVariableInMethod)
         {
-            instanceVariableInMethod.MyProperty = 10;
+            instanceVariableInMethod = new TestClass { MyProperty = 10 };
         }
 
         public static void DoSmthQ2(TestClass instanceVariableInMethod)
@@ -25,9 +26,9 @@ namespace ConsoleApp1
             instanceVariableInMethod = new TestClass { MyProperty = 10 };
         }
 
-        public static void DoSmthQ3(ref TestClass instanceVariableInMethod)
+        public static void DoSmthQ1(TestClass instanceVariableInMethod)
         {
-            instanceVariableInMethod = new TestClass { MyProperty = 10 };
+            instanceVariableInMethod.MyProperty = 10;
         }
 
         public class TestClass
@@ -39,6 +40,10 @@ namespace ConsoleApp1
                 Console.WriteLine($"MyProperty = {MyProperty }");
             }
         }
+
+
+
+
 
         //Stack: instanceVariable, instanceVariableInMethod
         //Heap: object for instanceVariable and object ...

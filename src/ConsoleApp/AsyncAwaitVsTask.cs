@@ -3,31 +3,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Interview
 {
     public class AsyncAwaitVsTask
     {
-        public static async Task Execute1()
-        {
-            Console.WriteLine($"Execute Before: {Thread.CurrentThread.ManagedThreadId}");
-            await AsyncAwaitClass.MakeFakeCallOnlyCPUAsync().ContinueWith(t =>
-            {
-                Calulate();
-
-            });
-            Console.WriteLine($"Execute After: {Thread.CurrentThread.ManagedThreadId}");
-        }
-
-        public static async Task Execute2()
-        {
-            Console.WriteLine($"Execute Before: {Thread.CurrentThread.ManagedThreadId}");
-            await AsyncAwaitClass.MakeFakeCallOnlyCPUAsync();
-
-            Calulate();
-
-            Console.WriteLine($"Execute After: {Thread.CurrentThread.ManagedThreadId}");
-        }
-
         public static void Calulate()
         {
             Console.WriteLine($"Calulate Before Sleep: {Thread.CurrentThread.ManagedThreadId}");
@@ -46,12 +25,10 @@ namespace ConsoleApp1
                 Console.WriteLine($"AsyncAwaitClass After call: {Thread.CurrentThread.ManagedThreadId}");
             }
 
-            public static async Task MakeFakeCallOnlyCPUAsync()
+            public static Task MakeFakeCallOnlyCPUAsync()
             {
                 Console.WriteLine($"AsyncAwaitClass Before call: {Thread.CurrentThread.ManagedThreadId}");
-                await Task.Delay(10);
-                Console.WriteLine($"AsyncAwaitClass After call: {Thread.CurrentThread.ManagedThreadId}");
-
+                return Task.Run(() => Task.Delay(1));
             }
         }
     }
