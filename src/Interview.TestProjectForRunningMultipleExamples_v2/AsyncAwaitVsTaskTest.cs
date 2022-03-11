@@ -16,8 +16,8 @@ namespace Interview.TestProjectForRunningMultipleExamples_v2
             AsyncAwaitClass.MakeFakeCallOnlyCPUAsync().ContinueWith(t =>
             {
                 Calulate();
-            }).Wait();
-            Console.WriteLine($"Execute1 After: {Thread.CurrentThread.ManagedThreadId}");
+                Console.WriteLine($"Execute1 After: {Thread.CurrentThread.ManagedThreadId}");
+            }).Wait();            
         }
 
         [TestMethod]
@@ -27,7 +27,6 @@ namespace Interview.TestProjectForRunningMultipleExamples_v2
             await AsyncAwaitClass.MakeFakeCallOnlyCPUAsync();
 
             Calulate();
-
             Console.WriteLine($"Execute2 After: {Thread.CurrentThread.ManagedThreadId}");
         }
 
@@ -38,8 +37,8 @@ namespace Interview.TestProjectForRunningMultipleExamples_v2
             AsyncAwaitClass.MakeCallAsync().ContinueWith(t =>
             {
                 Calulate();
-            }).Wait();
-            Console.WriteLine($"Execute1 After: {Thread.CurrentThread.ManagedThreadId}");
+                Console.WriteLine($"Execute1 After: {Thread.CurrentThread.ManagedThreadId}");
+            }).Wait();            
         }
 
         [TestMethod]
